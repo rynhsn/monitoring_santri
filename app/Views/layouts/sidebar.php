@@ -140,7 +140,7 @@
             <div class="cursor-pointer symbol symbol-circle symbol-40px"
                  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-overflow="true"
                  data-kt-menu-placement="top-start">
-                <img src="<?= base_url() ?>media/avatars/<?= getProfilePicture(user_id()) ?>" alt="image"/>
+                <img src="<?= base_url() ?>media/avatars/blank.png" alt="image"/>
             </div>
             <!--begin::User account menu-->
             <div
@@ -151,7 +151,7 @@
                     <div class="menu-content d-flex align-items-center px-3">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-50px me-5">
-                            <img alt="Logo" src="<?= base_url() ?>media/avatars/<?= getProfilePicture(user_id()) ?>"/>
+                            <img alt="Logo" src="<?= base_url() ?>media/avatars/blank.png"/>
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Username-->

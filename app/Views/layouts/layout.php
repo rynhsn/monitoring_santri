@@ -2,16 +2,16 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../"/>
-		<title><?= $title ?> | Pengaduan Masyarakat</title>
+		<title><?= $title ?> | Portal Monitoring Santri</title>
 		<meta charset="utf-8" />
-		<meta name="description" content="Portal Pengaduan Masyarakat" />
-		<meta name="keywords" content="Portal Pengaduan Masyarakat" />
+		<meta name="description" content="Portal Monitoring Santri" />
+		<meta name="keywords" content="Portal Monitoring Santri" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta property="og:locale" content="en_US" />
 		<meta property="og:type" content="article" />
-		<meta property="og:title" content="Portal Pengaduan Masyarakat" />
+		<meta property="og:title" content="Portal Monitoring Santri" />
 		<meta property="og:url" content="https://keenthemes.com/metronic" />
-		<meta property="og:site_name" content="Portal Pengaduan Masyarakat" />
+		<meta property="og:site_name" content="Portal Monitoring Santri" />
 		<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 		<link rel="shortcut icon" href="<?= base_url() ?>media/logos/favicon.ico" />
 		<!--begin::Fonts(mandatory for all pages)-->

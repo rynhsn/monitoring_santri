@@ -13,9 +13,15 @@ class AuthPermissionsSeeder extends Seeder
             ['name' => 'manage-permission','description' => 'Permission Management'],
             ['name' => 'manage-role','description' => 'Role Management'],
             ['name' => 'manage-menu','description' => 'Menu Management'],
-            ['name' => 'manage-complaint','description' => 'Complaint Management'],
-            ['name' => 'user-complaint', 'description' => 'User Complaint'],
-            ['name' => 'laporan', 'description' => 'Laporan']
+
+            ['name' => 'manage-santri','description' => 'Management Santri'],
+            ['name' => 'manage-pengajar','description' => 'Management Pengajar'],
+            ['name' => 'manage-koordinator','description' => 'Management Koordinator'],
+            ['name' => 'manage-wali','description' => 'Management Wali'],
+            ['name' => 'manage-hafalan','description' => 'Management Hafalan'],
+//            ['name' => 'manage-kegiatan','description' => 'Management Kegiatan'],
+            ['name' => 'manage-ekstrakurikuler','description' => 'Management Ekstrakurikuler'],
+            ['name' => 'manage-laporan','description' => 'Laporan Management'],
         ];
 
         // Using Query Builder
