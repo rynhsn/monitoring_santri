@@ -22,7 +22,7 @@ class AuthGroupPermissionSeeder extends Seeder
             ['group_id' => '1', 'permission_id' => '11', 'read' => '1', 'write' => '1', 'create' => '1'],
 //            ['group_id' => '1', 'permission_id' => '12', 'read' => '1', 'write' => '1', 'create' => '1'],
 
-            ['group_id' => '2', 'permission_id' => '1', 'read' => '1', 'write' => '1', 'create' => '1'],
+            ['group_id' => '2', 'permission_id' => '1', 'read' => '1', 'write' => '0', 'create' => '0'],
             ['group_id' => '2', 'permission_id' => '5', 'read' => '1', 'write' => '1', 'create' => '1'],
             ['group_id' => '2', 'permission_id' => '6', 'read' => '1', 'write' => '1', 'create' => '1'],
             ['group_id' => '2', 'permission_id' => '7', 'read' => '1', 'write' => '1', 'create' => '1'],

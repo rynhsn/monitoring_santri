@@ -22,6 +22,11 @@ class CreateWaliTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'jk' => [
+                'type' => 'ENUM',
+                'constraint' => ['L', 'P'],
+                'default' => 'L',
+            ],
             'alamat' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,

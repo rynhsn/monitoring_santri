@@ -18,15 +18,29 @@ class CreateSantriTable extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
+            'kelas_id' => [
+                'type' => 'INT',
+                'unsigned' => true,
+            ],
             'nama_lengkap' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
+            ],
+            'jk' => [
+                'type' => 'ENUM',
+                'constraint' => ['L', 'P'],
             ],
             'tahun_masuk' => [
                 'type' => 'INT',
             ],
             'tahun_lulus' => [
                 'type' => 'INT',
+                'null' => true,
+            ],
+            'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                'null' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -38,6 +52,7 @@ class CreateSantriTable extends Migration
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('wali_id', 'wali', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('kelas_id', 'kelas', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('santri');
     }
 

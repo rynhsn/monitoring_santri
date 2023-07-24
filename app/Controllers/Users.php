@@ -22,7 +22,7 @@ class Users extends BaseController
     {
         $this->userModel = new UserModel();
         $this->groupModel = new GroupModel();
-        $this->profile = new ProfileModel();
+//        $this->profile = new ProfileModel();
         $this->config = config('Auth');
     }
 
@@ -35,7 +35,7 @@ class Users extends BaseController
         ];
         foreach ($data['users'] as &$user) {
             $user->groups = $this->groupModel->getGroupsForUser($user->id);
-            $user->profile = $this->profile->where('user_id', $user->id)->first();
+//            $user->profile = $this->profile->where('user_id', $user->id)->first();
         }
         return view('users/index', $data);
     }
@@ -68,14 +68,14 @@ class Users extends BaseController
             ]);
         }
 
-        $data = [
-            'user_id'=>$this->userModel->getInsertID(),
-            'nama_lengkap'=>$this->request->getVar('username'),
-            'foto_profil'=>'blank.png',
-            'created_at' => date('Y-m-d H:i:s'),
-        ];
+//        $data = [
+//            'user_id'=>$this->userModel->getInsertID(),
+//            'nama_lengkap'=>$this->request->getVar('username'),
+//            'foto_profil'=>'blank.png',
+//            'created_at' => date('Y-m-d H:i:s'),
+//        ];
 
-        $this->profile->insert($data);
+//        $this->profile->insert($data);
 
         return $this->response->setJSON([
             'status' => 'success',
@@ -123,7 +123,7 @@ class Users extends BaseController
         ];
 
         $data['user']->groups = $this->groupModel->getGroupsForUser($data['user']->id);
-        $data['user']->profile = $this->profile->where('user_id', $data['user']->id)->first();
+//        $data['user']->profile = $this->profile->where('user_id', $data['user']->id)->first();
 //        dd($data['user']->groups);
         return view('users/view', $data);
     }
@@ -190,22 +190,22 @@ class Users extends BaseController
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        $image = $this->request->getFile('foto_profil');
-        //cek gambar, apakah tetap gambar lama
-        if ($image->getError() == 4) {
-            $namaFoto = $this->request->getVar('foto_lama');
-        } else {
-            //generate nama file random
-            $namaFoto = 'profil_'. $id . '.' . $image->getExtension();
-            //hapus file lama
-            unlink('media/avatars/' . $this->request->getVar('foto_lama'));
-            //pindahkan gambar
-            $image->move('media/avatars/', $namaFoto);
-        }
-
-        $data = array_merge($this->request->getPost(), ['foto_profil' => $namaFoto]);
-
-        $this->profile->update($id, $data);
+//        $image = $this->request->getFile('foto_profil');
+//        //cek gambar, apakah tetap gambar lama
+//        if ($image->getError() == 4) {
+//            $namaFoto = $this->request->getVar('foto_lama');
+//        } else {
+//            //generate nama file random
+//            $namaFoto = 'profil_'. $id . '.' . $image->getExtension();
+//            //hapus file lama
+//            unlink('media/avatars/' . $this->request->getVar('foto_lama'));
+//            //pindahkan gambar
+//            $image->move('media/avatars/', $namaFoto);
+//        }
+//
+//        $data = array_merge($this->request->getPost(), ['foto_profil' => $namaFoto]);
+//
+//        $this->profile->update($id, $data);
 
         session()->setFlashdata('message', 'Profile telah diupdate.');
         return redirect()->back();

@@ -14,17 +14,13 @@ class CreateEkstrakurikulerTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'koordinator_nip' => [
-                'type' => 'varchar',
-                'constraint' => 100,
+            'koordinator_id' => [
+                'type' => 'INT',
+                'unsigned' => true,
             ],
-            'nama' => [
+            'ekskul' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
-            ],
-            'deskripsi' => [
-                'type' => 'VARCHAR',
-                'constraint' => 255,
             ],
             'hari' => [
                 'type' => 'VARCHAR',
@@ -43,7 +39,7 @@ class CreateEkstrakurikulerTable extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('koordinator_nip', 'koordinator', 'nip', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('koordinator_id', 'koordinator', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('ekstrakurikuler');
     }
 

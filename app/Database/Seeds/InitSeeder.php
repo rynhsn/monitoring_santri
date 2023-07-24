@@ -10,6 +10,6 @@ class InitSeeder extends Seeder
     {
         $this->call('AuthSeeder');
         $this->call('MenuSeeder');
-//        $this->call('ProfileSeeder');
+        $this->call('LembagaSeeder');
     }
 }

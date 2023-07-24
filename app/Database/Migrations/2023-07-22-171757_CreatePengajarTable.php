@@ -9,9 +9,10 @@ class CreatePengajarTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'nip' => [
-                'type' => 'varchar',
-                'constraint' => 100,
+            'id' => [
+                'type' => 'INT',
+                'unsigned' => true,
+                'auto_increment' => true,
             ],
             'user_id' => [
                 'type' => 'INT',
@@ -21,9 +22,17 @@ class CreatePengajarTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'jk' => [
+                'type' => 'ENUM',
+                'constraint' => ['L', 'P'],
+            ],
             'no_hp' => [
                 'type' => 'VARCHAR',
                 'constraint' => 15,
+            ],
+            'jabatan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
             ],
             'is_ketua' => [
                 'type' => 'BIT',
@@ -37,7 +46,7 @@ class CreatePengajarTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('nip');
+        $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('pengajar');
     }

@@ -18,9 +18,9 @@ class CreateHafalanTable extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
-            'pengajar_nip' => [
-                'type' => 'varchar',
-                'constraint' => 100,
+            'pengajar_id' => [
+                'type' => 'INT',
+                'unsigned' => true,
             ],
             'surah' => [
                 'type' => 'VARCHAR',
@@ -34,7 +34,7 @@ class CreateHafalanTable extends Migration
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('santri_id', 'santri', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('pengajar_nip', 'pengajar', 'nip', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('pengajar_id', 'pengajar', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('hafalan');
     }
 

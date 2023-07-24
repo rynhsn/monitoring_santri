@@ -251,14 +251,14 @@
                     <tr>
                         <td class="d-flex align-items-center">
                             <!--begin:: Avatar -->
-                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                <a href="<?= base_url('users/detail/' . $user->id) ?>">
-                                    <div class="symbol-label">
-                                        <img src="<?= base_url() ?>media/avatars/<?= $user->profile['foto_profil'] ?>" alt="<?= $user->username ?>"
-                                             class="w-100"/>
-                                    </div>
-                                </a>
-                            </div>
+<!--                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">-->
+<!--                                <a href="--><?php //= base_url('users/detail/' . $user->id) ?><!--">-->
+<!--                                    <div class="symbol-label">-->
+<!--                                        <img src="--><?php //= base_url() ?><!--media/avatars/--><?php //= $user->profile['foto_profil'] ?><!--" alt="--><?php //= $user->username ?><!--"-->
+<!--                                             class="w-100"/>-->
+<!--                                    </div>-->
+<!--                                </a>-->
+<!--                            </div>-->
                             <!--end::Avatar-->
                             <!--begin::User details-->
                             <div class="d-flex flex-column">

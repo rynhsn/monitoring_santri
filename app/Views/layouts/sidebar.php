@@ -1,5 +1,5 @@
 <!--begin::Sidebar-->
-<div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true" data-kt-drawer-name="app-sidebar"
+<div id="kt_app_sidebar" class="app-sidebar flex-column bg-success" data-kt-drawer="true" data-kt-drawer-name="app-sidebar"
      data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px"
      data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
     <!--begin::Header-->
@@ -13,9 +13,9 @@
             <!--end::Logo-->
             <!--begin::Info-->
             <span class="d-flex flex-column align-items-start flex-grow-1">
-									<span class="fs-5 fw-bold text-white text-uppercase" data-kt-element="title">Pengaduan Masyarakat</span>
+									<span class="fs-5 fw-bold text-white text-uppercase" data-kt-element="title">SIMONTRI APPS</span>
 									<span class="fs-7 fw-bold text-gray-700 lh-sm"
-                                          data-kt-element="desc">Portal Pengaduan Masyarakat</span>
+                                          data-kt-element="desc">Sistem Monitoring Santri</span>
 								</span>
             <!--end::Info-->
         <!--end::Toggle-->
