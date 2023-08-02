@@ -1,23 +1,24 @@
 <!--begin::Sidebar-->
-<div id="kt_app_sidebar" class="app-sidebar flex-column bg-success" data-kt-drawer="true" data-kt-drawer-name="app-sidebar"
+<div id="kt_app_sidebar" class="app-sidebar flex-column bg-success" data-kt-drawer="true"
+     data-kt-drawer-name="app-sidebar"
      data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px"
      data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
     <!--begin::Header-->
     <div class="app-sidebar-header d-none d-lg-flex px-6 pt-8 pb-4" id="kt_app_sidebar_header">
         <!--begin::Toggle-->
-            <!--begin::Logo-->
-            <span class="d-flex flex-center flex-shrink-0 w-40px me-3">
-									<img alt="Logo" src="<?= base_url() ?>media/svg/brand-logos/slack-icon.svg"
-                                         data-kt-element="logo" class="h-30px"/>
-								</span>
-            <!--end::Logo-->
-            <!--begin::Info-->
-            <span class="d-flex flex-column align-items-start flex-grow-1">
-									<span class="fs-5 fw-bold text-white text-uppercase" data-kt-element="title">SIMONTRI APPS</span>
-									<span class="fs-7 fw-bold text-gray-700 lh-sm"
-                                          data-kt-element="desc">Sistem Monitoring Santri</span>
-								</span>
-            <!--end::Info-->
+        <!--begin::Logo-->
+        <span class="d-flex flex-center flex-shrink-0 w-40px me-3">
+            <img alt="Logo" src="<?= base_url() ?>media/logos/logo.png"
+                 data-kt-element="logo" class="h-50px"/>
+        </span>
+        <!--end::Logo-->
+        <!--begin::Info-->
+        <span class="d-flex flex-column align-items-start flex-grow-1">
+            <span class="fs-5 fw-bold text-white text-uppercase" data-kt-element="title">SIMONTRI APPS</span>
+            <span class="fs-7 fw-bold text-white-50 lh-sm"
+                  data-kt-element="desc">Sistem Monitoring Santri</span>
+        </span>
+        <!--end::Info-->
         <!--end::Toggle-->
     </div>
     <!--end::Header-->
@@ -29,7 +30,7 @@
              data-kt-scroll-wrappers="#kt_app_sidebar_navs" data-kt-scroll-offset="5px">
             <!--begin::Sidebar menu-->
             <div id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false"
-                 class="menu menu-column menu-rounded menu-sub-indention menu-active-bg">
+                 class="menu menu-column menu-rounded menu-sub-indention menu-active-bg menu-active">
 
                 <!--begin::Menu Item-->
                 <div class="menu-item <?= service('uri')->getPath() == '/' ? 'here' : '' ?>">
@@ -38,8 +39,8 @@
                        class="menu-link <?= service('uri')->getPath() == '/' ? 'active' : '' ?>">
                         <!--begin::Icon-->
                         <span class="menu-icon">
-												<i class="ki-outline ki-home-2 fas-1"></i>
-											</span>
+                            <i class="ki-solid ki-home-2 fas-1"></i>
+                        </span>
                         <!--end::Icon-->
                         <!--begin::Title-->
                         <span class="menu-title">Dashboard</span>

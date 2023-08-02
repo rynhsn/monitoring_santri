@@ -9,12 +9,12 @@ class CreateEkstrakurikulerTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'id_ekskul' => [
                 'type' => 'INT',
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'koordinator_id' => [
+            'koordinator_nip' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
@@ -29,17 +29,11 @@ class CreateEkstrakurikulerTable extends Migration
             'pukul' => [
                 'type' => 'VARCHAR',
                 'constraint' => 15,
-            ],
-            'created_at' => [
-                'type' => 'DATETIME',
-            ],
-            'updated_at' => [
-                'type' => 'DATETIME',
-            ],
+            ]
         ]);
 
-        $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('koordinator_id', 'koordinator', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addPrimaryKey('id_ekskul');
+        $this->forge->addForeignKey('koordinator_nip', 'koordinator', 'nip_koordinator', 'CASCADE', 'CASCADE');
         $this->forge->createTable('ekstrakurikuler');
     }
 

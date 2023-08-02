@@ -1,5 +1,30 @@
 <?= $this->extend('layouts/layout') ?>
 <?= $this->section('content') ?>
+
+<?php if (session('message')) : ?>
+    <!--begin::Notice-->
+    <div class="notice d-flex bg-light-success rounded border-success border border-dashed mb-9 p-6">
+        <!--begin::Icon-->
+        <i class="ki-duotone ki-check-square fs-2tx text-success me-4">
+            <span class="path1"></span>
+            <span class="path2"></span>
+            <span class="path3"></span>
+        </i>
+        <!--end::Icon-->
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-stack flex-grow-1">
+            <!--begin::Content-->
+            <div class="fw-semibold">
+                <h4 class="text-gray-900 fw-bold">Berhasil</h4>
+                <div class="fs-6 text-gray-700"><?= session('message'); ?></div>
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Notice-->
+<?php endif; ?>
+
     <!--begin::Card-->
     <div class="card card-flush">
         <!--begin::Card header-->
@@ -19,7 +44,8 @@
             <div class="card-toolbar">
                 <?php if (hasActionAccess('create', user_id())): ?>
                     <!--begin::Button-->
-                    <button type="button" class="btn btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_menu">
+                    <button type="button" class="btn btn-light-primary" data-bs-toggle="modal"
+                            data-bs-target="#kt_modal_add_menu">
                         <i class="ki-outline ki-plus-square fs-3"></i>Add Menu
                     </button>
                     <!--end::Button-->

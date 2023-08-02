@@ -11,5 +11,7 @@ class InitSeeder extends Seeder
         $this->call('AuthSeeder');
         $this->call('MenuSeeder');
         $this->call('LembagaSeeder');
+        $this->call('KelasSeeder');
+        $this->call('LembagaSeeder');
     }
 }

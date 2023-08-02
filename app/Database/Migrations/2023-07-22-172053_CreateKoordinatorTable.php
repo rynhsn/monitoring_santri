@@ -9,7 +9,7 @@ class CreateKoordinatorTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'nip_koordinator' => [
                 'type' => 'INT',
                 'unsigned' => true,
                 'auto_increment' => true,
@@ -35,7 +35,7 @@ class CreateKoordinatorTable extends Migration
                 'constraint' => 100,
             ],
             'is_ketua' => [
-                'type' => 'BIT',
+                'type' => '',
                 'default' => 0,
             ],
             'created_at' => [
@@ -46,7 +46,7 @@ class CreateKoordinatorTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('id');
+        $this->forge->addPrimaryKey('nip_koordinator');
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('koordinator');
     }

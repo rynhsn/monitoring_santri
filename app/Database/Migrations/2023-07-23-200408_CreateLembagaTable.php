@@ -10,7 +10,7 @@ class CreateLembagaTable extends Migration
     {
         //visi dan misi
         $this->forge->addField([
-            'id' => [
+            'id_lembaga' => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -29,7 +29,7 @@ class CreateLembagaTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('id');
+        $this->forge->addPrimaryKey('id_lembaga');
         $this->forge->createTable('lembaga');
     }
 

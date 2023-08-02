@@ -9,10 +9,9 @@ class CreatePengajarTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'nip_pengajar' => [
                 'type' => 'INT',
                 'unsigned' => true,
-                'auto_increment' => true,
             ],
             'user_id' => [
                 'type' => 'INT',
@@ -46,7 +45,7 @@ class CreatePengajarTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('id');
+        $this->forge->addPrimaryKey('nip_pengajar');
         $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('pengajar');
     }

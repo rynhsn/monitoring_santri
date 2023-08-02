@@ -9,16 +9,16 @@ class CreateHafalanTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'id_hafalan' => [
                 'type' => 'INT',
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'santri_id' => [
+            'santri_nik' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
-            'pengajar_id' => [
+            'pengajar_nip' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
@@ -32,9 +32,9 @@ class CreateHafalanTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('santri_id', 'santri', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('pengajar_id', 'pengajar', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addPrimaryKey('id_hafalan');
+        $this->forge->addForeignKey('santri_nik', 'santri', 'nik_santri', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('pengajar_nip', 'pengajar', 'nip_pengajar', 'CASCADE', 'CASCADE');
         $this->forge->createTable('hafalan');
     }
 

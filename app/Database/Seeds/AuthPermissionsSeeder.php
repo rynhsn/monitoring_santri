@@ -22,6 +22,8 @@ class AuthPermissionsSeeder extends Seeder
 //            ['name' => 'manage-kegiatan','description' => 'Management Kegiatan'],
             ['name' => 'manage-ekstrakurikuler','description' => 'Management Ekstrakurikuler'],
             ['name' => 'manage-laporan','description' => 'Laporan Management'],
+
+            ['name' => 'manage-settings','description' => 'Settings Management']
         ];
 
         // Using Query Builder

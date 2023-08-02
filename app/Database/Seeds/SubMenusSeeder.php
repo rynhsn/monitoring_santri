@@ -75,6 +75,33 @@ class SubMenusSeeder extends Seeder
                 'sequence' => '2',
                 'created_at' => Time::now(),
             ],
+
+            [
+                'menu_id' => '9',
+                'permission_id' => '11',
+                'sub_menu' => 'Lembaga',
+                'description' => 'Profil Lembaga',
+                'url' => 'lembaga',
+                'icon' => 'ki-outline ki-menu',
+                'is_active' => '1',
+                'has_notify' => '0',
+                'notify' => '0',
+                'sequence' => '1',
+                'created_at' => Time::now(),
+            ],
+            [
+                'menu_id' => '9',
+                'permission_id' => '11',
+                'sub_menu' => 'Kelas',
+                'description' => 'Data Kelas',
+                'url' => 'kelas',
+                'icon' => 'ki-outline ki-menu',
+                'is_active' => '1',
+                'has_notify' => '0',
+                'notify' => '0',
+                'sequence' => '2',
+                'created_at' => Time::now(),
+            ],
         ];
 
         $this->db->table('sub_menus');

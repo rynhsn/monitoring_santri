@@ -4,19 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProfileModel extends Model
+class WaliModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'profile';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
+    protected $table            = 'wali';
+    protected $primaryKey       = 'nik_wali';
+    protected $useAutoIncrement = false;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'nik', 'nama_lengkap', 'jenis_kelamin', 'tanggal_lahir', 'alamat', 'telepon', 'foto_ktp', 'foto_profil', 'created_at', 'updated_at'];
+    protected $allowedFields    = ['user_id', 'nama_lengkap', 'jk', 'alamat', 'no_hp', 'created_at', 'updated_at'];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

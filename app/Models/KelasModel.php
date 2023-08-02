@@ -8,7 +8,7 @@ class KelasModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'kelas';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_kelas';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $protectFields    = true;

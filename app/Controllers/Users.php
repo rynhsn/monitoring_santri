@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Entities\User;
 use App\Models\GroupModel;
-use App\Models\ProfileModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UserModel;
 use Myth\Auth\Password;
@@ -15,7 +14,6 @@ class Users extends BaseController
 {
     protected UserModel $userModel;
     protected GroupModel $groupModel;
-    protected ProfileModel $profile;
     protected $config;
 
     public function __construct()
@@ -144,6 +142,14 @@ class Users extends BaseController
         $user = $this->userModel->find($id);
         $this->userModel->update($id, ['email' => $this->request->getVar('email')]);
         session()->setFlashdata('message', 'User email has been changed');
+        return redirect()->back();
+    }
+
+    public function updateUsername($id)
+    {
+        $user = $this->userModel->find($id);
+        $this->userModel->update($id, ['email' => $this->request->getVar('username')]);
+        session()->setFlashdata('message', 'Username has been changed');
         return redirect()->back();
     }
 

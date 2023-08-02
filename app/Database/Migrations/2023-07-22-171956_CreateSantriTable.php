@@ -9,12 +9,11 @@ class CreateSantriTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'nik_santri' => [
                 'type' => 'INT',
                 'unsigned' => true,
-                'auto_increment' => true,
             ],
-            'wali_id' => [
+            'wali_nik' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
@@ -50,9 +49,9 @@ class CreateSantriTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('wali_id', 'wali', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('kelas_id', 'kelas', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addPrimaryKey('nik_santri');
+        $this->forge->addForeignKey('wali_nik', 'wali', 'nik_wali', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('kelas_id', 'kelas', 'id_kelas', 'CASCADE', 'CASCADE');
         $this->forge->createTable('santri');
     }
 

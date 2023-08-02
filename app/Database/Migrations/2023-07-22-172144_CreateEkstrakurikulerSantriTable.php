@@ -9,24 +9,18 @@ class CreateEkstrakurikulerSantriTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
-                'type' => 'INT',
-                'unsigned' => true,
-                'auto_increment' => true,
-            ],
-            'ekstrakurikuler_id' => [
+            'ekskul_id' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
-            'santri_id' => [
+            'santri_nik' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
         ]);
 
-        $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('ekstrakurikuler_id', 'ekstrakurikuler', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('santri_id', 'santri', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('ekskul_id', 'ekstrakurikuler', 'id_ekskul', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('santri_nik', 'santri', 'nik_santri', 'CASCADE', 'CASCADE');
         $this->forge->createTable('ekstrakurikuler_santri');
     }
 

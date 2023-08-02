@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\ProfileModel;
 use CodeIgniter\Controller;
 use CodeIgniter\Session\Session;
 use Myth\Auth\Config\Auth as AuthConfig;
@@ -22,7 +21,6 @@ class AuthController extends Controller
      * @var Session
      */
     protected $session;
-    protected ProfileModel $profile;
 
     public function __construct()
     {
@@ -32,7 +30,6 @@ class AuthController extends Controller
 
         $this->config = config('Auth');
         $this->auth   = service('authentication');
-        $this->profile = new ProfileModel();
     }
 
     //--------------------------------------------------------------------
@@ -150,20 +147,6 @@ class AuthController extends Controller
         $users = model(UserModel::class);
 
         // Validate basics first since some password rules rely on these fields
-        //buat nik menjadi NIK ketika error
-        $rules = config('Validation')->registrationRules ?? [
-            'nik'      => 'required|is_unique[profile.nik]|min_length[16]|max_length[16]|numeric',
-            'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
-            'email'    => 'required|valid_email|is_unique[users.email]',
-            'foto_ktp' => [
-                'rules' => 'uploaded[foto_ktp]|max_size[foto_ktp,2048]|is_image[foto_ktp]|mime_in[foto_ktp,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'max_size' => 'Ukuran gambar terlalu besar.',
-                    'is_image' => 'Yang anda pilih bukan gambar.',
-                    'mime_in' => 'Yang anda pilih bukan gambar.'
-                ]
-            ]
-        ];
 
         if (! $this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
@@ -194,27 +177,6 @@ class AuthController extends Controller
         if (! $users->save($user)) {
             return redirect()->back()->withInput()->with('errors', $users->errors());
         }
-
-        //AMBIL USER ID YANG BARU SAJA DIBUAT
-        $user_id = $users->getInsertID();
-        $image = $this->request->getFile('foto_ktp');
-        $foto_ktp = 'ktp_'. $user_id . '.' . $image->getExtension();
-        $image->move('uploads/ktp/', $foto_ktp);
-        $data = [
-            'user_id' => $user_id,
-            'nik' => $this->request->getPost('nik'),
-            'nama_lengkap' => $this->request->getPost('nama_lengkap'),
-            'tanggal_lahir' => $this->request->getPost('tanggal_lahir'),
-            'jenis_kelamin' => $this->request->getPost('jenis_kelamin'),
-            'alamat' => $this->request->getPost('alamat'),
-            'telepon' => $this->request->getPost('telepon'),
-            'foto_ktp' => $foto_ktp,
-            'foto_profil' => 'blank.png',
-            'created_at' => date('Y-m-d H:i:s'),
-//            'updated_at' => date('Y-m-d H:i:s'),
-        ];
-
-        $this->profile->insert($data);
 
         if ($this->config->requireActivation !== null) {
             $activator = service('activator');

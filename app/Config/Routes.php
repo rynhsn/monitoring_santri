@@ -52,6 +52,7 @@ $routes->group('/', ['filter' => 'login'], function ($routes) {
         $routes->get('detail/(:num)', 'Users::detail/$1');
         $routes->post('update-role/(:num)', 'Users::updateRole/$1');
         $routes->post('update-email/(:num)', 'Users::updateEmail/$1');
+        $routes->post('update-username/(:num)', 'Users::updateUsername/$1');
         $routes->post('update-password/(:num)', 'Users::updatePassword/$1');
         $routes->post('update-profile/(:num)', 'Users::updateProfile/$1');
         $routes->post('create', 'Users::store');
@@ -79,6 +80,34 @@ $routes->group('/', ['filter' => 'login'], function ($routes) {
         $routes->put('update', 'Permissions::update');
         $routes->delete('delete', 'Permissions::destroy');
     });
+
+    $routes->group('santri', ['filter' => 'permission:manage-santri'], function ($routes){
+        $routes->get('', 'Santri::index');
+    });
+
+    $routes->group('kelas', ['filter' => 'permission:manage-settings'], function ($routes){
+        $routes->get('', 'Kelas::index');
+        $routes->post('store', 'Kelas::store');
+        $routes->get('delete/(:num)', 'Kelas::destroy/$1');
+    });
+
+    $routes->group('lembaga', ['filter' => 'permission:manage-settings'], function ($routes){
+        $routes->get('', 'Lembaga::index');
+        $routes->post('store', 'Lembaga::store');
+    });
+
+    $routes->group('pengajar', ['filter' => 'permission:manage-settings'], function ($routes){
+        $routes->get('', 'Pengajar::index');
+        $routes->get('create', 'Pengajar::create');
+        $routes->get('update/(:num)', 'Pengajar::update/$1');
+        $routes->put('update/profile/(:num)', 'Pengajar::profileUpdate/$1');
+//        $routes->put('update/account/(:num)', 'Pengajar::accountUpdate/$1');
+        $routes->post('store', 'Pengajar::store');
+        $routes->get('delete/(:num)', 'Pengajar::drop/$1');
+        $routes->get('ketua/(:num)', 'Pengajar::buatKetua/$1');
+    });
+
+
 
 });
 

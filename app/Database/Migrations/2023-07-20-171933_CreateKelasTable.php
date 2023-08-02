@@ -9,7 +9,7 @@ class CreateKelasTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
+            'id_kelas' => [
                 'type'           => 'INT',
                 'constraint'     => 5,
                 'unsigned'       => true,
@@ -21,7 +21,7 @@ class CreateKelasTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('id');
+        $this->forge->addPrimaryKey('id_kelas');
         $this->forge->createTable('kelas');
     }
 
