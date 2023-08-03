@@ -4,21 +4,21 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Entities\User;
-use App\Models\PengajarModel;
+use App\Models\WaliModel;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use Myth\Auth\Password;
 
-class Pengajar extends BaseController
+class Wali extends BaseController
 {
 
-    protected PengajarModel $pengajarModel;
+    protected $waliModel;
     protected UserModel $userModel;
     protected $config;
 
     public function __construct()
     {
-        $this->pengajarModel = new PengajarModel();
+        $this->waliModel = new WaliModel();
         $this->userModel = new UserModel();
         $this->config = config('Auth');
     }
@@ -26,39 +26,39 @@ class Pengajar extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Data Pengajar',
-            'pengajar' => $this->pengajarModel->findAll(),
-            'ketua' => $this->pengajarModel->where('is_ketua', 1)->first(),
+            'title' => 'Data Wali',
+            'wali' => $this->waliModel->getWali(),
         ];
-        return view('pengajar/index', $data);
+
+        return view('wali/index', $data);
     }
 
     public function create()
     {
         $data = [
-            'title' => 'Tambah Data Pengajar Baru',
+            'title' => 'Tambah Data Wali Baru',
         ];
-        return view('pengajar/create', $data);
+        return view('wali/create', $data);
     }
 
 
     public function update($id): string
     {
         $data = [
-            'title' => 'Tambah Data Pengajar Baru',
-            'pengajar' => $this->pengajarModel->getPengajarByNip($id),
+            'title' => 'Tambah Data Wali Baru',
+            'wali' => $this->waliModel->getWaliByNik($id),
         ];
-        return view('pengajar/update', $data);
+        return view('wali/update', $data);
     }
 
     public function profileUpdate($id): RedirectResponse
     {
-        $this->pengajarModel->save([
-            'nip_pengajar' => $id,
+        $this->waliModel->save([
+            'nik_wali' => $id,
             'nama_lengkap' => $this->request->getVar('nama_lengkap'),
             'no_hp' => $this->request->getVar('no_hp'),
             'jk' => $this->request->getVar('jk'),
-            'jabatan' => $this->request->getVar('jabatan'),
+            'alamat' => $this->request->getVar('alamat'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
@@ -69,7 +69,7 @@ class Pengajar extends BaseController
     public function store()
     {
         $rules = [
-            'nip_pengajar' => 'required|is_unique[pengajar.nip_pengajar]',
+            'nik_wali' => 'required|is_unique[wali.nik_wali]',
             'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required',
@@ -84,42 +84,34 @@ class Pengajar extends BaseController
         $user = new User($this->request->getVar($allowedPostFields));
         $user->activate();
 
-        if (!$this->userModel->withGroup('Pengajar')->protect(false)->save($user)) {
+        if (!$this->userModel->withGroup('Wali')->protect(false)->save($user)) {
             return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
         }
 
-        $this->pengajarModel->save([
+        $this->waliModel->save([
             'user_id' => $this->userModel->getInsertID(),
-            'nip_pengajar' => $this->request->getVar('nip_pengajar'),
+            'nik_wali' => $this->request->getVar('nik_wali'),
             'nama_lengkap' => $this->request->getVar('nama_lengkap'),
             'no_hp' => $this->request->getVar('no_hp'),
             'jk' => $this->request->getVar('jk'),
-            'jabatan' => $this->request->getVar('jabatan'),
+            'alamat' => $this->request->getVar('alamat'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         session()->setFlashdata('message', 'Data berhasil ditambahkan.');
-        return redirect()->to('/pengajar');
+        return redirect()->to('/wali');
     }
 
     //drop
     public function drop($id)
     {
         //ambil user_id
-        $user_id = $this->pengajarModel->find($id)['user_id'];
-        $this->pengajarModel->delete($id);
+        $user_id = $this->waliModel->find($id)['user_id'];
+        $this->waliModel->delete($id);
         $this->userModel->delete($user_id);
         session()->setFlashdata('message', 'Data berhasil dihapus.');
-        return redirect()->to('/pengajar');
-    }
-
-    public function buatKetua($id)
-    {
-        $this->pengajarModel->ubahKetua($id);
-
-        session()->setFlashdata('message', 'Proses berhasil.');
-        return redirect()->to('/pengajar');
+        return redirect()->to('/wali');
     }
 
     public function accountUpdate($id)

@@ -101,10 +101,31 @@ $routes->group('/', ['filter' => 'login'], function ($routes) {
         $routes->get('create', 'Pengajar::create');
         $routes->get('update/(:num)', 'Pengajar::update/$1');
         $routes->put('update/profile/(:num)', 'Pengajar::profileUpdate/$1');
-//        $routes->put('update/account/(:num)', 'Pengajar::accountUpdate/$1');
+        $routes->put('update/account/(:num)', 'Pengajar::accountUpdate/$1');
         $routes->post('store', 'Pengajar::store');
         $routes->get('delete/(:num)', 'Pengajar::drop/$1');
         $routes->get('ketua/(:num)', 'Pengajar::buatKetua/$1');
+    });
+
+    $routes->group('koordinator', ['filter' => 'permission:manage-settings'], function ($routes){
+        $routes->get('', 'Koordinator::index');
+        $routes->get('create', 'Koordinator::create');
+        $routes->get('update/(:num)', 'Koordinator::update/$1');
+        $routes->put('update/profile/(:num)', 'Koordinator::profileUpdate/$1');
+        $routes->put('update/account/(:num)', 'Koordinator::accountUpdate/$1');
+        $routes->post('store', 'Koordinator::store');
+        $routes->get('delete/(:num)', 'Koordinator::drop/$1');
+        $routes->get('ketua/(:num)', 'Koordinator::buatKetua/$1');
+    });
+
+    $routes->group('wali', ['filter' => 'permission:manage-settings'], function ($routes){
+        $routes->get('', 'Wali::index');
+        $routes->get('create', 'Wali::create');
+        $routes->get('update/(:num)', 'Wali::update/$1');
+        $routes->put('update/profile/(:num)', 'Wali::profileUpdate/$1');
+        $routes->put('update/account/(:num)', 'Wali::accountUpdate/$1');
+        $routes->post('store', 'Wali::store');
+        $routes->get('delete/(:num)', 'Wali::drop/$1');
     });
 
 

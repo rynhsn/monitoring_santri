@@ -45,9 +45,9 @@
                     <!--end::Filter-->
                     <?php if (hasActionAccess('create', user_id())) : ?>
                         <!--begin::Add user-->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                 data-bs-target="#kt_modal_add_user">
-                            <i class="ki-outline ki-plus fs-2"></i>Tambah Santri
+                            <i class="ki-outline ki-plus fs-2"></i>Tambah Data Santri
                         </button>
                         <!--end::Add user-->
                     <?php endif ?>
@@ -65,7 +65,7 @@
                                 <h2 class="fw-bold">Tambah Santri Baru</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div class="btn btn-icon btn-sm btn-active-icon-primary"
+                                <div class="btn btn-icon btn-sm btn-active-icon-success"
                                      data-kt-users-modal-action="close">
                                     <i class="ki-outline ki-cross fs-1"></i>
                                 </div>
@@ -86,37 +86,52 @@
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2">Username</label>
+                                            <label class="required fw-semibold fs-6 mb-2">NIK</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="text" name="username" id="username"
+                                            <input type="number" name="nik_santri" id="nik_santri"
                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                   placeholder="Masukkan Nama Pengguna"/>
+                                                   placeholder="Masukkan NIK Santri"/>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2">Email</label>
+                                            <label class="required fw-semibold fs-6 mb-2">Nama Lengkap</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="email" name="email" id="email"
+                                            <input type="text" name="nama_lengkap" id="nama_lengkap"
                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                   placeholder="example@domain.com" autocomplete="false"/>
+                                                   placeholder="Masukkan Nama Lengkap Santri"/>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2">Password</label>
+                                            <label class="required fw-semibold fs-6 mb-2">Jenis Kelamin</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="password" name="password" id="password"
-                                                   placeholder="Masukkan password"
-                                                   class="form-control form-control-solid mb-3 mb-lg-0"
-                                                   autocomplete="false"/>
+                                            <!--begin::Col-->
+                                            <div class="col-lg mb-2">
+                                                <label class="form-check form-check-custom form-check-solid">
+                                                    <input class="form-check-input" name="jk" type="radio"
+                                                           value="L" <?= old('jk') != "P" ? 'checked' : '' ?>/>
+                                                    <span class="form-check-label">Laki-laki</span>
+                                                </label>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <?= validation_show_error('jk'); ?>
+                                            </div>
+                                            <div class="col-lg">
+                                                <label class="form-check form-check-custom form-check-solid">
+                                                    <input class="form-check-input" name="jk" type="radio"
+                                                           value="P" <?= old('jk') == "P" ? 'checked' : '' ?>/>
+                                                    <span class="form-check-label">Perempuan</span>
+                                                </label>
+                                            </div>
+                                            <!--end::Col-->
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -140,7 +155,7 @@
                                         <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">
                                             Batal
                                         </button>
-                                        <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                                        <button type="submit" class="btn btn-success" data-kt-users-modal-action="submit">
                                             <span class="indicator-label">Kirim</span>
                                             <span class="indicator-progress">Harap tunggu...
                                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
@@ -189,12 +204,12 @@
                         <td><?= date('d M Y', strtotime($item['created_at'])) ?></td>
 
                         <td class="text-end">
-                            <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
+                            <a href="#" class="btn btn-light btn-active-light-success btn-flex btn-center btn-sm"
                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                                 <i class="ki-outline ki-down fs-5 ms-1"></i></a>
                             <!--begin::Menu-->
                             <div
-                                class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
+                                class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-success fw-semibold fs-7 w-125px py-4"
                                 data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">

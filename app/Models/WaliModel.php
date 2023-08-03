@@ -16,7 +16,7 @@ class WaliModel extends Model
     protected $allowedFields    = ['user_id', 'nama_lengkap', 'jk', 'alamat', 'no_hp', 'created_at', 'updated_at'];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -38,4 +38,24 @@ class WaliModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    //get data koordinator join dengan tabel user by nip
+    public function getWaliByNik($nik)
+    {
+        return $this->db->table('wali')
+            ->select('wali.*, users.email, users.username, santri.nama_lengkap as nama_santri')
+            ->join('users', 'users.id = wali.user_id')
+            ->join('santri', 'santri.wali_nik = wali.nik_wali', 'left')
+            ->where('nik_wali', $nik)
+            ->get()->getRowArray();
+    }
+
+    //ambil data wali lalu left join dengan tabel santri
+    public function getWali()
+    {
+        return $this->db->table('wali')
+            ->select('wali.*, santri.nama_lengkap as nama_santri')
+            ->join('santri', 'santri.wali_nik = wali.nik_wali', 'left')
+            ->get()->getResultArray();
+    }
 }

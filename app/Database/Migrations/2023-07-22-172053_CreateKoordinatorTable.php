@@ -12,7 +12,6 @@ class CreateKoordinatorTable extends Migration
             'nip_koordinator' => [
                 'type' => 'INT',
                 'unsigned' => true,
-                'auto_increment' => true,
             ],
             'user_id' => [
                 'type' => 'INT',
@@ -35,7 +34,7 @@ class CreateKoordinatorTable extends Migration
                 'constraint' => 100,
             ],
             'is_ketua' => [
-                'type' => '',
+                'type' => 'BIT',
                 'default' => 0,
             ],
             'created_at' => [

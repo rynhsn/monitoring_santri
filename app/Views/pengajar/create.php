@@ -1,6 +1,30 @@
 <?= $this->extend('layouts/layout') ?>
 <?= $this->section('content') ?>
 
+<?php if (session('message')) : ?>
+    <!--begin::Notice-->
+    <div class="notice d-flex bg-light-success rounded border-success border border-dashed mb-9 p-6">
+        <!--begin::Icon-->
+        <i class="ki-duotone ki-check-square fs-2tx text-success me-4">
+            <span class="path1"></span>
+            <span class="path2"></span>
+            <span class="path3"></span>
+        </i>
+        <!--end::Icon-->
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-stack flex-grow-1">
+            <!--begin::Content-->
+            <div class="fw-semibold">
+                <h4 class="text-gray-900 fw-bold">Berhasil</h4>
+                <div class="fs-6 text-gray-700"><?= session('message'); ?></div>
+            </div>
+            <!--end::Content-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Notice-->
+<?php endif; ?>
+
     <!--begin::Basic info-->
     <div class="card mb-5 mb-xl-10">
         <!--begin::Content-->
@@ -184,8 +208,8 @@
             <!--end::Card body-->
             <!--begin::Actions-->
             <div class="card-footer d-flex justify-content-end py-6 px-9">
-                <button type="reset" class="btn btn-light btn-active-light-primary me-2">Batal</button>
-                <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Simpan
+                <button type="reset" class="btn btn-light btn-active-light-success me-2">Batal</button>
+                <button type="submit" class="btn btn-success" id="kt_account_profile_details_submit">Simpan
                 </button>
             </div>
             <!--end::Actions-->

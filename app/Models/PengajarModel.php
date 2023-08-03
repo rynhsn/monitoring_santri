@@ -16,7 +16,7 @@ class PengajarModel extends Model
     protected $allowedFields    = ['user_id', 'nama_lengkap', 'jk', 'no_hp', 'jabatan', 'is_ketua', 'created_at', 'updated_at'];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

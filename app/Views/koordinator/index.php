@@ -31,7 +31,7 @@
         <div class="card-header mt-6">
             <!--begin::Card title-->
             <div class="card-title">
-                <h1>Ketua Pengajar</h1>
+                <h1>Ketua Koordinator</h1>
             </div>
             <!--end::Card title-->
         </div>
@@ -41,12 +41,12 @@
             <div class="row mb-6">
                 <?php if ($ketua != null) : ?>
                     <!--begin::Label-->
-                    <label class="col-lg-2 col-form-label required fw-semibold fs-6"><?= $ketua['nip_pengajar'] ?>
+                    <label class="col-lg-2 col-form-label required fw-semibold fs-6"><?= $ketua['nip_koordinator'] ?>
                         - <?= $ketua['nama_lengkap'] ?></label>
                     <!--end::Label-->
                 <?php else : ?>
                     <!--begin::Label-->
-                    <label class="col-lg col-form-label required fw-semibold fs-6">Belum ada ketua pengajar</label>
+                    <label class="col-lg col-form-label required fw-semibold fs-6">Belum ada ketua koordinator</label>
                     <!--end::Label-->
                 <?php endif ?>
             </div>
@@ -73,8 +73,8 @@
             <div class="card-toolbar">
                 <?php if (hasActionAccess('create', user_id())): ?>
                     <!--begin::Button-->
-                    <a href="<?= base_url('pengajar/create') ?>" class="btn btn-light-success">
-                        <i class="ki-outline ki-plus-square fs-3"></i>Tambah Pengajar
+                    <a href="<?= base_url('koordinator/create') ?>" class="btn btn-light-success">
+                        <i class="ki-outline ki-plus-square fs-3"></i>Tambah Koordinator
                     </a>
                     <!--end::Button-->
                 <?php endif; ?>
@@ -100,12 +100,12 @@
                 </tr>
                 </thead>
                 <tbody class="fw-semibold text-gray-600">
-                <?php foreach ($pengajar as $item) : ?>
+                <?php foreach ($koordinator as $item) : ?>
                     <tr>
                         <td class="d-flex align-items-center">
                             <div class="d-flex flex-column">
-                                <a href="<?= base_url('pengajar/update/' . $item['nip_pengajar']) ?>"
-                                   class="text-gray-800 text-hover-success mb-1"><?= $item['nip_pengajar'] ?></a>
+                                <a href="<?= base_url('koordinator/update/' . $item['nip_koordinator']) ?>"
+                                   class="text-gray-800 text-hover-success mb-1"><?= $item['nip_koordinator'] ?></a>
                                 <span><?= $item['nama_lengkap'] ?></span>
                             </div>
                         </td>
@@ -116,16 +116,16 @@
                         <td><?= date('d M Y', strtotime($item['updated_at'])) ?></td>
                         <?php if (hasActionAccess('write', user_id())): ?>
                             <td class="text-end">
-                                <a href="<?= base_url('pengajar/update/' . $item['nip_pengajar']) ?>"
+                                <a href="<?= base_url('koordinator/update/' . $item['nip_koordinator']) ?>"
                                    class="btn btn-icon btn-active-light-primary w-30px h-30px">
                                     <i class="ki-outline ki-setting-3 fs-3"></i>
                                 </a>
-                                <a href="<?= base_url('pengajar/delete/' . $item['nip_pengajar']) ?>"
+                                <a href="<?= base_url('koordinator/delete/' . $item['nip_koordinator']) ?>"
                                    class="btn btn-icon btn-active-light-danger w-30px h-30px"
                                    onclick="return confirm('Data akan dihapus, anda yakin?')">
                                     <i class="ki-outline ki-trash fs-3"></i>
                                 </a>
-                                <a href="<?= base_url('pengajar/ketua/' . $item['nip_pengajar']) ?>"
+                                <a href="<?= base_url('koordinator/ketua/' . $item['nip_koordinator']) ?>"
                                    class="btn btn-icon btn-active-light-success w-30px h-30px"
                                    onclick="return confirm('Pengguna akan dijadikan ketua, lanjutkan?')">
                                     <i class="ki-outline ki-book fs-3"></i>
