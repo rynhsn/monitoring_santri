@@ -63,7 +63,7 @@
             <div class="app-container container-fluid d-flex flex-stack" id="kt_app_header_container">
                 <!--begin::Sidebar toggle-->
                 <div class="d-flex align-items-center d-block d-lg-none ms-n3" title="Show sidebar menu">
-                    <div class="btn btn-icon btn-active-color-primary w-35px h-35px me-2"
+                    <div class="btn btn-icon btn-active-color-success w-35px h-35px me-2"
                          id="kt_app_sidebar_mobile_toggle">
                         <i class="ki-solid ki-abstract-28 fs-2"></i>
                     </div>

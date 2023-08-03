@@ -138,13 +138,50 @@
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2">Repeat Password</label>
+                                            <label class="fw-semibold fs-6 mb-2 required">Email</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="password" name="pass_confirm" id="pass_confirm"
-                                                   placeholder="Ulangi Password"
-                                                   class="form-control form-control-solid mb-3 mb-lg-0"
-                                                   autocomplete="false"/>
+                                            <input type="email" name="email" id="email"
+                                                   placeholder="Masukkan email santri"
+                                                   class="form-control form-control-solid mb-3 mb-lg-0"/>
+                                            <!--end::Input-->
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="fv-row mb-7">
+                                            <!--begin::Label-->
+                                            <label class="fw-semibold fs-6 mb-2 required">Kelas</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                    data-placeholder="Pilih Kelas"
+                                                    name="kelas_id" id="kelas_id"
+                                                    data-dropdown-parent="#kt_modal_add_user"
+                                                    data-allow-clear="true">
+                                                <option></option>
+                                                <?php foreach ($kelas as $item) : ?>
+                                                    <option value="<?= $item['id_kelas'] ?>"><?= $item['kelas'] ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <!--end::Input-->
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="fv-row mb-7">
+                                            <!--begin::Label-->
+                                            <label class="fw-semibold fs-6 mb-2 required">Wali Santri</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                    data-placeholder="Pilih Wali Santri"
+                                                    name="wali_nik" id="wali_nik"
+                                                    data-dropdown-parent="#kt_modal_add_user"
+                                                    data-allow-clear="true">
+                                                <option></option>
+                                                <?php foreach ($wali as $item) : ?>
+                                                    <option value="<?= $item['nik_wali'] ?>"><?= $item['nik_wali'] ?> - <?= $item['nama_lengkap'] ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->

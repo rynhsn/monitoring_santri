@@ -178,7 +178,7 @@
                     <!--end::Input group=-->
                     <!--begin::Submit button-->
                     <div class="d-grid mb-10">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-success">
                             <!--begin::Indicator label-->
                             <span class="indicator-label"><?= lang('Auth.register') ?></span>
                             <!--end::Indicator label-->
@@ -187,7 +187,7 @@
                     <!--end::Submit button-->
                     <!--begin::Sign up-->
                     <div class="text-gray-500 text-center fw-semibold fs-6"><?= lang('Auth.alreadyRegistered') ?>
-                        <a href="<?= url_to('login') ?>" class="link-primary fw-semibold"><?= lang('Auth.signIn') ?></a>
+                        <a href="<?= url_to('login') ?>" class="link-success fw-semibold"><?= lang('Auth.signIn') ?></a>
                     </div>
                     <!--end::Sign up-->
                 </form>

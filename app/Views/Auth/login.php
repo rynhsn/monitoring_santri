@@ -73,14 +73,14 @@
                                 <div></div>
                                 <!--begin::Link-->
                                 <a href="<?= url_to('forgot') ?>"
-                                   class="link-primary"><?= lang('Auth.forgotYourPassword') ?></a>
+                                   class="link-success"><?= lang('Auth.forgotYourPassword') ?></a>
                                 <!--end::Link-->
                             </div>
                             <!--end::Actions-->
                         <?php endif; ?>
                         <!--begin::Submit button-->
                         <div class="d-grid mb-10">
-                            <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+                            <button type="submit" id="kt_sign_in_submit" class="btn btn-success">
                                 <!--begin::Indicator label-->
                                 <span class="indicator-label"><?= lang('Auth.loginAction') ?></span>
                                 <!--end::Indicator label-->
@@ -96,7 +96,7 @@
                             <!--begin::Sign up-->
                             <div class="text-gray-500 text-center fw-semibold fs-6">
                                 <a href="<?= url_to('register') ?>"
-                                   class="link-primary"><?= lang('Auth.needAnAccount') ?></a>
+                                   class="link-success"><?= lang('Auth.needAnAccount') ?></a>
                             </div>
                             <!--end::Sign up-->
                         <?php endif; ?>
