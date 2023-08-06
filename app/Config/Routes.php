@@ -128,6 +128,14 @@ $routes->group('/', ['filter' => 'login'], function ($routes) {
         $routes->get('delete/(:num)', 'Wali::drop/$1');
     });
 
+    $routes->group('santri', ['filter' => 'permission:manage-settings'], function ($routes){
+        $routes->get('', 'Santri::index');
+        $routes->post('store', 'Santri::store');
+        $routes->get('update/(:num)', 'Santri::update/$1');
+        $routes->put('update/profile/(:num)', 'Santri::profileUpdate/$1');
+        $routes->get('delete/(:num)', 'Santri::drop/$1');
+    });
+
 
 
 });

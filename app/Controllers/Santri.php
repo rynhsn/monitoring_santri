@@ -28,8 +28,18 @@ class Santri extends BaseController
             'kelas' => $this->kelasModel->findAll(),
             'wali' => $this->waliModel->findAll(),
         ];
-
-//        dd($data);
+//dd($data['santri']);
         return view('santri/index', $data);
+    }
+
+    public function store()
+    {
+        if(!$this->santriModel->insert($this->request->getVar())){
+            session()->setFlashdata('error', 'Data santri gagal disimpan.');
+            return redirect()->back();
+        }
+        
+        session()->setFlashdata('message', 'Data santri berhasil disimpan.');
+        return redirect()->back();
     }
 }

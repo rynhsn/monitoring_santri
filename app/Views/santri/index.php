@@ -45,8 +45,7 @@
                     <!--end::Filter-->
                     <?php if (hasActionAccess('create', user_id())) : ?>
                         <!--begin::Add user-->
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#kt_modal_add_user">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
                             <i class="ki-outline ki-plus fs-2"></i>Tambah Data Santri
                         </button>
                         <!--end::Add user-->
@@ -75,14 +74,11 @@
                             <!--begin::Modal body-->
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_add_user_form" class="form" action="#">
+                                <form action="<?= base_url('santri/store') ?>" method="post">
                                     <!--begin::Scroll-->
                                     <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll"
                                          data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
-                                         data-kt-scroll-max-height="auto"
-                                         data-kt-scroll-dependencies="#kt_modal_add_user_header"
-                                         data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
-                                         data-kt-scroll-offset="300px">
+                                         data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
@@ -232,16 +228,17 @@
                 <tbody class="text-gray-600 fw-semibold">
                 <?php foreach ($santri as $item) : ?>
                     <tr>
+                        <td><?= $item['nik_santri'] ?> </td>
                         <td><?= $item['nama_lengkap'] ?> </td>
                         <td><?= $item['nama_wali'] ?> </td>
                         <td>
                             <span class="badge badge-light-<?= COLOR[$item['kelas_id'] % count(COLOR)] ?> fw-bolder"><?= $item['kelas'] ?></span>
                         </td>
-                        <td><?= $item['jk'] ?> </td>
+                        <td><?= JENIS_KELAMIN[$item['jk']] ?> </td>
                         <td><?= date('d M Y', strtotime($item['created_at'])) ?></td>
 
                         <td class="text-end">
-                            <a href="#" class="btn btn-light btn-active-light-success btn-flex btn-center btn-sm"
+                            <a class="btn btn-light btn-active-light-success btn-flex btn-center btn-sm"
                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                                 <i class="ki-outline ki-down fs-5 ms-1"></i></a>
                             <!--begin::Menu-->
@@ -250,15 +247,19 @@
                                 data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="<?= base_url('users/detail/' . $item['nik_santri']) ?>"
+                                    <a href="<?= base_url('santri/detail/' . $item['nik_santri']) ?>"
                                        class="menu-link px-3">View</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <?php if (hasActionAccess('write', user_id())): ?>
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row"
-                                           data-user-id="<?= $item['nik_santri'] ?>">Delete</a>
+                                        <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_update_user_<?= $item['nik_santri'] ?>">Delete</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="<?= base_url('santri/delete/'.$item['nik_santri']) ?>" class="menu-link px-3" onclick="return confirm('Data akan dihapus, yakin?')">Delete</a>
                                     </div>
                                     <!--end::Menu item-->
                                 <?php endif; ?>
@@ -274,4 +275,161 @@
         <!--end::Card body-->
     </div>
     <!--end::Card-->
+
+<?php foreach($santri as $item) : ?>
+    <!--begin::Modal - Add task-->
+    <div class="modal fade" id="kt_modal_update_user<?= $item['nik_santri'] ?>" tabindex="-1" aria-hidden="true">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-centered mw-650px">
+            <!--begin::Modal content-->
+            <div class="modal-content">
+                <!--begin::Modal header-->
+                <div class="modal-header" id="kt_modal_update_user_header">
+                    <!--begin::Modal title-->
+                    <h2 class="fw-bold">Ubah Data Santri</h2>
+                    <!--end::Modal title-->
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-icon-success"
+                         data-kt-users-modal-action="close">
+                        <i class="ki-outline ki-cross fs-1"></i>
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <!--begin::Modal body-->
+                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                    <!--begin::Form-->
+                    <form action="<?= base_url('santri/store')?>" method="post">
+                        <!--begin::Scroll-->
+                        <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_update_user_scroll"
+                             data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
+                             data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_update_user_header" data-kt-scroll-wrappers="#kt_modal_update_user_scroll" data-kt-scroll-offset="300px">
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-semibold fs-6 mb-2">NIK</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="number" name="nik_santri" id="nik_santri"
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="Masukkan NIK Santri" value="<?= $item['nik_santri'] ?>" disabled/>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-semibold fs-6 mb-2">Nama Lengkap</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" name="nama_lengkap" id="nama_lengkap"
+                                       class="form-control form-control-solid mb-3 mb-lg-0"
+                                       placeholder="Masukkan Nama Lengkap Santri" value="<?= $item['nama_lengkap'] ?>" required/>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="required fw-semibold fs-6 mb-2">Jenis Kelamin</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <!--begin::Col-->
+                                <div class="col-lg mb-2">
+                                    <label class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" name="jk" type="radio"
+                                               value="L" <?= old('jk') != "P" || $item['nik_santri'] != 'P' ? 'checked' : '' ?>/>
+                                        <span class="form-check-label">Laki-laki</span>
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('jk'); ?>
+                                </div>
+                                <div class="col-lg">
+                                    <label class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" name="jk" type="radio"
+                                               value="P" <?= old('jk') == "P" || $item['nik_santri'] == 'P' ? 'checked' : '' ?>/>
+                                        <span class="form-check-label">Perempuan</span>
+                                    </label>
+                                </div>
+                                <!--end::Col-->
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="fw-semibold fs-6 mb-2 required">Email</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="email" name="email" id="email"
+                                       placeholder="Masukkan email santri"
+                                       class="form-control form-control-solid mb-3 mb-lg-0" required/>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="fw-semibold fs-6 mb-2 required">Kelas</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <select class="form-select form-select-solid" data-control="select2"
+                                        data-placeholder="Pilih Kelas"
+                                        name="kelas_id" id="kelas_id"
+                                        data-dropdown-parent="#kt_modal_update_user"
+                                        data-allow-clear="true">
+                                    <option></option>
+                                    <?php foreach ($kelas as $item) : ?>
+                                        <option value="<?= $item['id_kelas'] ?>"><?= $item['kelas'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="fw-semibold fs-6 mb-2 required">Wali Santri</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <select class="form-select form-select-solid" data-control="select2"
+                                        data-placeholder="Pilih Wali Santri"
+                                        name="wali_nik" id="wali_nik"
+                                        data-dropdown-parent="#kt_modal_update_user"
+                                        data-allow-clear="true">
+                                    <option></option>
+                                    <?php foreach ($wali as $item) : ?>
+                                        <option value="<?= $item['nik_wali'] ?>"><?= $item['nik_wali'] ?> - <?= $item['nama_lengkap'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <!--end::Input-->
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <!--end::Scroll-->
+                        <!--begin::Actions-->
+                        <div class="text-center pt-15">
+                            <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">
+                                Batal
+                            </button>
+                            <button type="submit" class="btn btn-success" data-kt-users-modal-action="submit">
+                                <span class="indicator-label">Kirim</span>
+                                <span class="indicator-progress">Harap tunggu...
+                                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
+    <!--end::Modal - Add task-->
+<?php endforeach ?>
 <?= $this->endSection(); ?>
