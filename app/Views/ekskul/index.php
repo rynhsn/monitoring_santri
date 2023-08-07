@@ -46,7 +46,7 @@
                     <?php if (hasActionAccess('create', user_id())) : ?>
                         <!--begin::Add user-->
                         <button type="button" class="btn btn-light-success" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-                            <i class="ki-outline ki-plus-square fs-3"></i>Tambah Data Santri
+                            <i class="ki-outline ki-plus-square fs-3"></i>Tambah Data Ekstrakurikuler
                         </button>
                         <!--end::Add user-->
                     <?php endif ?>
@@ -61,7 +61,7 @@
                             <!--begin::Modal header-->
                             <div class="modal-header" id="kt_modal_add_user_header">
                                 <!--begin::Modal title-->
-                                <h2 class="fw-bold">Tambah Santri Baru</h2>
+                                <h2 class="fw-bold">Buat Ekstrakurikuler</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
                                 <div class="btn btn-icon btn-sm btn-active-icon-success"
@@ -74,7 +74,7 @@
                             <!--begin::Modal body-->
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form action="<?= base_url('santri/store') ?>" method="post">
+                                <form action="<?= base_url('ekstrakurikuler/store') ?>" method="post">
                                     <!--begin::Scroll-->
                                     <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll"
                                          data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
