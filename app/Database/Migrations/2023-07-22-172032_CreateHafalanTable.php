@@ -26,6 +26,12 @@ class CreateHafalanTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'ayat_awal' => [
+                'type' => 'INT',
+            ],
+            'ayat_akhir' => [
+                'type' => 'INT',
+            ],
             'tanggal' => [
                 'type' => 'VARCHAR',
                 'constraint' => 10,
