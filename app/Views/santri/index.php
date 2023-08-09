@@ -82,12 +82,12 @@
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
-                                            <label class="required fw-semibold fs-6 mb-2">NIK</label>
+                                            <label class="required fw-semibold fs-6 mb-2">NIS</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="number" name="nik_santri" id="nik_santri"
+                                            <input type="number" name="nis_santri" id="nis_santri"
                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                   placeholder="Masukkan NIK Santri" required/>
+                                                   placeholder="Masukkan NIS Santri" required/>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->
@@ -216,7 +216,7 @@
             <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                 <thead>
                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                    <th class="min-w-125px">NIK</th>
+                    <th class="min-w-125px">NIS</th>
                     <th class="min-w-125px">Nama Santri</th>
                     <th class="min-w-125px">Nama Wali</th>
                     <th class="min-w-50px">Kelas</th>
@@ -228,7 +228,7 @@
                 <tbody class="text-gray-600 fw-semibold">
                 <?php foreach ($santri as $item) : ?>
                     <tr>
-                        <td><?= $item['nik_santri'] ?> </td>
+                        <td><?= $item['nis_santri'] ?> </td>
                         <td><?= $item['nama_lengkap'] ?> </td>
                         <td><?= $item['nama_wali'] ?> </td>
                         <td>
@@ -245,21 +245,15 @@
                             <div
                                 class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-success fw-semibold fs-7 w-125px py-4"
                                 data-kt-menu="true">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="<?= base_url('santri/detail/' . $item['nik_santri']) ?>"
-                                       class="menu-link px-3">View</a>
-                                </div>
-                                <!--end::Menu item-->
                                 <?php if (hasActionAccess('write', user_id())): ?>
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_update_user_<?= $item['nik_santri'] ?>">Update</a>
+                                        <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_update_user_<?= $item['nis_santri'] ?>">Update</a>
                                     </div>
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="<?= base_url('santri/delete/'.$item['nik_santri']) ?>" class="menu-link px-3" onclick="return confirm('Data akan dihapus, yakin?')">Delete</a>
+                                        <a href="<?= base_url('santri/delete/'.$item['nis_santri']) ?>" class="menu-link px-3" onclick="return confirm('Data akan dihapus, yakin?')">Delete</a>
                                     </div>
                                     <!--end::Menu item-->
                                 <?php endif; ?>
@@ -278,7 +272,7 @@
 
 <?php foreach($santri as $item) : ?>
     <!--begin::Modal - Add task-->
-    <div class="modal fade" id="kt_modal_update_user_<?= $item['nik_santri'] ?>" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="kt_modal_update_user_<?= $item['nis_santri'] ?>" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-dialog-centered mw-650px">
             <!--begin::Modal content-->
@@ -307,12 +301,12 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-7">
                                 <!--begin::Label-->
-                                <label class="required fw-semibold fs-6 mb-2">NIK</label>
+                                <label class="required fw-semibold fs-6 mb-2">NIS</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="number" name="nik_santri" id="nik_santri"
+                                <input type="number" name="nis_santri" id="nis_santri"
                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                       placeholder="Masukkan NIK Santri" value="<?= $item['nik_santri'] ?>" disabled/>
+                                       placeholder="Masukkan NIS Santri" value="<?= $item['nis_santri'] ?>" disabled/>
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -377,7 +371,7 @@
                                 <select class="form-select form-select-solid" data-control="select2"
                                         data-placeholder="Pilih Kelas"
                                         name="kelas_id" id="kelas_id"
-                                        data-dropdown-parent="#kt_modal_update_user"
+                                        data-dropdown-parent="#kt_modal_update_user_<?= $item['nis_santri'] ?>"
                                         data-allow-clear="true">
                                     <option></option>
                                     <?php foreach ($kelas as $k) : ?>
@@ -396,7 +390,7 @@
                                 <select class="form-select form-select-solid" data-control="select2"
                                         data-placeholder="Pilih Wali Santri"
                                         name="wali_nik" id="wali_nik"
-                                        data-dropdown-parent="#kt_modal_update_user"
+                                        data-dropdown-parent="#kt_modal_update_user_<?= $item['nis_santri'] ?>"
                                         data-allow-clear="true">
                                     <option></option>
                                     <?php foreach ($wali as $w) : ?>

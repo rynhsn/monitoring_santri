@@ -136,6 +136,12 @@ $routes->group('/', ['filter' => 'login'], function ($routes) {
         $routes->get('delete/(:num)', 'Santri::drop/$1');
     });
 
+    $routes->group('hafalan', ['filter' => 'permission:manage-hafalan'], function ($routes) {
+        $routes->get('', 'Hafalan::index');
+        $routes->post('store', 'Hafalan::store');
+        $routes->get('delete/(:num)', 'Hafalan::drop/$1');
+        $routes->get('filter', 'Hafalan::filter');
+    });
 
 
 });

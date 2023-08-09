@@ -13,14 +13,14 @@ class CreateEkstrakurikulerSantriTable extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
-            'santri_nik' => [
+            'santri_nis' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
         ]);
 
         $this->forge->addForeignKey('ekskul_id', 'ekstrakurikuler', 'id_ekskul', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('santri_nik', 'santri', 'nik_santri', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('santri_nis', 'santri', 'nis_santri', 'CASCADE', 'CASCADE');
         $this->forge->createTable('ekstrakurikuler_santri');
     }
 

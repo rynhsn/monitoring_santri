@@ -9,7 +9,7 @@ class CreateSantriTable extends Migration
     public function up()
     {
         $this->forge->addField([
-            'nik_santri' => [
+            'nis_santri' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
@@ -49,7 +49,7 @@ class CreateSantriTable extends Migration
             ],
         ]);
 
-        $this->forge->addPrimaryKey('nik_santri');
+        $this->forge->addPrimaryKey('nis_santri');
         $this->forge->addForeignKey('wali_nik', 'wali', 'nik_wali', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('kelas_id', 'kelas', 'id_kelas', 'CASCADE', 'CASCADE');
         $this->forge->createTable('santri');

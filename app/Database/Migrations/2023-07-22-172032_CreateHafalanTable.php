@@ -14,7 +14,7 @@ class CreateHafalanTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'santri_nik' => [
+            'santri_nis' => [
                 'type' => 'INT',
                 'unsigned' => true,
             ],
@@ -39,7 +39,7 @@ class CreateHafalanTable extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id_hafalan');
-        $this->forge->addForeignKey('santri_nik', 'santri', 'nik_santri', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('santri_nis', 'santri', 'nis_santri', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('pengajar_nip', 'pengajar', 'nip_pengajar', 'CASCADE', 'CASCADE');
         $this->forge->createTable('hafalan');
     }

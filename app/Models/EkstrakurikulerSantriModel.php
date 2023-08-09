@@ -10,5 +10,5 @@ class EkstrakurikulerSantriModel extends Model
     protected $table            = 'ekstrakurikuler_santri';
     protected $returnType       = 'array';
     protected $protectFields    = true;
-    protected $allowedFields    = ['ekskul_id', 'santri_nik'];
+    protected $allowedFields    = ['ekskul_id', 'santri_nis'];
 }

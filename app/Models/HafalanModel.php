@@ -13,7 +13,7 @@ class HafalanModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['santri_nik', 'pengajar.nip', 'surah', 'tanggal'];
+    protected $allowedFields    = ['santri_nis', 'pengajar_nip', 'surah', 'ayat_awal', 'ayat_akhir', 'tanggal'];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,4 +38,24 @@ class HafalanModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getHafalan($data = null): array
+    {
+        if ($data == null) {
+            return $this->db->table('hafalan')
+                ->select('santri.nama_lengkap as nama_santri, santri.kelas_id, pengajar.nama_lengkap as nama_pengajar, hafalan.*, kelas.kelas')
+                ->join('santri', 'santri.nis_santri = hafalan.santri_nis')
+                ->join('kelas', 'kelas.id_kelas = santri.kelas_id')
+                ->join('pengajar', 'pengajar.nip_pengajar = hafalan.pengajar_nip')
+                ->get()->getResultArray();
+        }
+
+        return $this->db->table('hafalan')
+            ->select('santri.nama_lengkap as nama_santri, santri.kelas_id, pengajar.nama_lengkap as nama_pengajar, hafalan.*, kelas.kelas')
+            ->join('santri', 'santri.nis_santri = hafalan.santri_nis')
+            ->join('kelas', 'kelas.id_kelas = santri.kelas_id')
+            ->join('pengajar', 'pengajar.nip_pengajar = hafalan.pengajar_nip')
+            ->where($data)
+            ->get()->getResultArray();
+    }
 }

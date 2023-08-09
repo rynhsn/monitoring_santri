@@ -8,7 +8,7 @@ class SantriModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'santri';
-    protected $primaryKey       = 'nik_santri';
+    protected $primaryKey       = 'nis_santri';
     protected $useAutoIncrement = false;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;

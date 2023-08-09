@@ -102,7 +102,7 @@
                     <label class="col-lg-2 col-form-label required fw-semibold fs-6">No. HP</label>
                     <!--end::Label-->
                     <!--begin::Col-->
-                    <div class="col-lg-4 fv-row">
+                    <div class="col-lg-3 fv-row">
                         <input type="number" name="no_hp"
                                class="form-control form-control-lg form-control-solid <?= validation_show_error('no_hp') ? 'is-invalid' : ''; ?>"
                                placeholder="No. HP koordinator"
