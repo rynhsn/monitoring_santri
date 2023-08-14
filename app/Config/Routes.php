@@ -143,6 +143,12 @@ $routes->group('/', ['filter' => 'login'], function ($routes) {
         $routes->get('filter', 'Hafalan::filter');
     });
 
+    $routes->group('data-ekskul', ['filter' => 'permission:manage-ekstrakurikuler'], function ($routes) {
+        $routes->get('', 'DataEkskul::index');
+        $routes->post('store', 'DataEkskul::store');
+        $routes->get('delete/(:num)', 'DataEkskul::drop/$1');
+    });
+
 
 });
 

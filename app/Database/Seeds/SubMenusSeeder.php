@@ -102,6 +102,19 @@ class SubMenusSeeder extends Seeder
                 'sequence' => '2',
                 'created_at' => Time::now(),
             ],
+            [
+                'menu_id' => '9',
+                'permission_id' => '11',
+                'sub_menu' => 'Data Ekstrakurikuler',
+                'description' => 'Data Ekstrakurikuler',
+                'url' => 'data-ekskul',
+                'icon' => 'ki-outline ki-menu',
+                'is_active' => '1',
+                'has_notify' => '0',
+                'notify' => '0',
+                'sequence' => '3',
+                'created_at' => Time::now(),
+            ],
         ];
 
         $this->db->table('sub_menus');
