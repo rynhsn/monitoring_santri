@@ -17,8 +17,7 @@ class CreateLembagaTable extends Migration
                 'auto_increment' => true,
             ],
             'visi' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
+                'type'       => 'TEXT',
             ],
             'misi' => [
                 'type'       => 'TEXT',

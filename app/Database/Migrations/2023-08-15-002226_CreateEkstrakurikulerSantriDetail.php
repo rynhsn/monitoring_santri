@@ -25,6 +25,6 @@ class CreateEkstrakurikulerSantriDetail extends Migration
 
     public function down()
     {
-        //
+        $this->forge->dropTable('ekstrakurikuler_santri_detail', true, true);
     }
 }

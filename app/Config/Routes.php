@@ -29,8 +29,9 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('/', 'Home::index');
 $routes->group('/', ['filter' => 'login'], function ($routes) {
-    $routes->get('', 'Dashboard::index');
+    $routes->get('dashboard', 'Dashboard::index');
     $routes->group('menus',['filter' => 'permission:manage-menu'] , function ($routes) {
         $routes->get('', 'Menus::index');
         $routes->post('create', 'Menus::store');
