@@ -18,13 +18,13 @@ class CreateEkstrakurikulerSantriDetail extends Migration
                 'unsigned' => true,
             ],
         ]);
-        $this->forge->addForeignKey('ekskul_santri_id', 'ekstrakurikuler_santri', 'id_ekskul_santri', 'CASCADE', 'CASCADE');
-        $this->forge->addForeignKey('santri_nis', 'santri', 'nis_santri', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('ekstrakurikuler_santri_detail');
+//        $this->forge->addForeignKey('ekskul_santri_id', 'ekstrakurikuler_santri', 'id_ekskul_santri', 'CASCADE', 'CASCADE');
+//        $this->forge->addForeignKey('santri_nis', 'santri', 'nis_santri', 'CASCADE', 'CASCADE');
+//        $this->forge->createTable('ekstrakurikuler_santri_detail');
     }
 
     public function down()
     {
-        $this->forge->dropTable('ekstrakurikuler_santri_detail', true, true);
+//        $this->forge->dropTable('ekstrakurikuler_santri_detail', true, true);
     }
 }

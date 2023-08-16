@@ -39,10 +39,16 @@ class EkstrakurikulerModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getEkskul(): array
+    public function getEkskul($nip = null)
     {
-        return $this->db->table('ekstrakurikuler')
-            ->join('koordinator', 'koordinator.nip_koordinator = ekstrakurikuler.koordinator_nip')
-            ->get()->getResultArray();
+        if ($nip == null)
+            return $this->db->table('ekstrakurikuler')
+                ->join('koordinator', 'koordinator.nip_koordinator = ekstrakurikuler.koordinator_nip')
+                ->get()->getResultArray();
+        else
+            //hanya 1 data
+            return $this->db->table('ekstrakurikuler')
+                ->where('koordinator_nip', $nip)
+                ->get()->getRowArray();
     }
 }

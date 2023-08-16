@@ -97,6 +97,15 @@ const COLOR = ['danger', 'warning', 'success', 'info', 'primary'];
 const IS_VALID_COLOR = ['danger', 'success'];
 const JENIS_KELAMIN = ['L' => 'Laki-laki', 'P' => 'Perempuan'];
 
+const HARI = [
+    1 => 'Senin',
+    2 => 'Selasa',
+    3 => 'Rabu',
+    4 => 'Kamis',
+    5 => "Jum'at",
+    6 => 'Sabtu',
+    7 => 'Minggu',
+];
 const NAMA_SURAH = [
     1 => "Al-Fatihah",
     2 => "Al-Baqarah",

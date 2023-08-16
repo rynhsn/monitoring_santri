@@ -145,12 +145,16 @@ $routes->group('/', ['filter' => 'login'], function ($routes) {
     });
 
     $routes->group('data-ekskul', ['filter' => 'permission:manage-ekstrakurikuler'], function ($routes) {
+        $routes->get('', 'DataEkskul::index');
         $routes->post('store', 'DataEkskul::store');
         $routes->get('delete/(:num)', 'DataEkskul::drop/$1');
     });
 
     $routes->group('ekstrakurikuler', ['filter' => 'permission:manage-ekstrakurikuler'], function ($routes) {
         $routes->get('', 'Ekstrakurikuler::index');
+        $routes->post('store', 'Ekstrakurikuler::store');
+        $routes->get('delete/(:num)', 'Ekstrakurikuler::drop/$1');
+        $routes->get('filter', 'Ekstrakurikuler::filter');
     });
 
 });

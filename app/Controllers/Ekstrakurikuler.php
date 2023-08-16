@@ -4,50 +4,86 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\EkstrakurikulerModel;
-use App\Models\KelasModel;
+use App\Models\EkstrakurikulerSantriModel;
 use App\Models\KoordinatorModel;
+use App\Models\SantriModel;
+use App\Models\WaliModel;
+use CodeIgniter\HTTP\RedirectResponse;
+use ReflectionException;
 
 class Ekstrakurikuler extends BaseController
 {
     protected EkstrakurikulerModel $ekskulModel;
     protected KoordinatorModel $koordinatorModel;
-    protected KelasModel $kelasModel;
+    protected WaliModel $waliModel;
+    protected SantriModel $santriModel;
+    protected $ekskulSantriModel;
 
     public function __construct()
     {
         $this->ekskulModel = new EkstrakurikulerModel();
         $this->koordinatorModel = new KoordinatorModel();
-        $this->kelasModel = new KelasModel();
+        $this->waliModel = new WaliModel();
+        $this->santriModel = new SantriModel();
+        $this->ekskulSantriModel = new EkstrakurikulerSantriModel();
     }
 
     public function index()
     {
         $data = [
             'title' => 'Ekstrakurikuler',
+            'ekskulSantri' => $this->ekskulSantriModel->getEkskul(),
+            'santri' => $this->santriModel->findAll(),
+            'listEkskul' => $this->ekskulModel->getEkskul(),
         ];
+        if (in_groups('Koordinator')) {
+            $data['koordinator'] = $this->koordinatorModel->where('user_id', user_id())->first();
+            $data['ekskul'] = $this->ekskulModel->getEkskul($data['koordinator']['nip_koordinator']);
+            $data['ekskulSantri'] = $this->ekskulSantriModel->getEkskul($data['ekskul']['id_ekskul']);
+        }
+
+        if (in_groups('Wali')) {
+            $wali = $this->waliModel->where('user_id', user_id())->first();
+            $data['santri'] = $this->santriModel->where('wali_nik', $wali['nik_wali'])->findAll();
+            $data['ekskulSantri'] = $this->ekskulSantriModel->getEkskulByNis($data['santri']);
+        }
+
+//        dd($data);
         return view('ekstrakurikuler/index', $data);
     }
 
-    //create
-    public function create(){
-        $data = [
-            'title' => 'Tambah Ekstrakurikuler',
-            'ekskul' => $this->ekskulModel->getEkskul(),
-            'koordinator' => $this->koordinatorModel->findAll(),
-            'kelas' => $this->kelasModel->findAll(),
-        ];
+    //store
 
-        return view('ekstrakurikuler/create', $data);
+    /**
+     * @throws ReflectionException
+     */
+    public function store(): RedirectResponse
+    {
+        $this->ekskulSantriModel->save($this->request->getVar());
+        session()->setFlashdata('message', 'Data berhasil ditambahkan.');
+        return redirect()->back();
     }
 
-    public function history(){
-        $data = [
-            'title' => 'History Ekstrakurikuler',
-            'ekskul' => $this->ekskulModel->getEkskul(),
-            'koordinator' => $this->koordinatorModel->findAll(),
-            'kelas' => $this->kelasModel->findAll(),
-        ];
-
-        return view('ekstrakurikuler/history', $data);
+    //delete
+    public function drop($id): RedirectResponse
+    {
+        $this->ekskulSantriModel->delete($id);
+        session()->setFlashdata('message', 'Data berhasil dihapus.');
+        return redirect()->back();
     }
+//
+//    public function filter(){
+//        $data = [
+//            'title' => 'Hafalan',
+//            'hafalan' => $this->hafalanModel->getHafalan($this->request->getGet()),
+//            'santri' => $this->santriModel->findAll(),
+//            'pengajar' => $this->pengajarModel->where('user_id', user_id())->first(),
+//        ];
+//        if(in_groups('Wali')){
+//            $wali  = $this->waliModel->where('user_id',  user_id())->first();
+//            $data['santri'] = $this->santriModel->where('wali_nik',  $wali['nik_wali'])->findAll();
+//        }
+//
+//        return view('hafalan/index', $data);
+//    }
 }
