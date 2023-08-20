@@ -33,10 +33,10 @@
                  class="menu menu-column menu-rounded menu-sub-indention menu-active-bg menu-active">
 
                 <!--begin::Menu Item-->
-                <div class="menu-item <?= service('uri')->getPath() == '/' ? 'here' : '' ?>">
+                <div class="menu-item <?= service('uri')->getPath() == 'dashboard' ? 'here' : '' ?>">
                     <!--begin::Menu link-->
-                    <a href="/"
-                       class="menu-link <?= service('uri')->getPath() == '/' ? 'active' : '' ?>">
+                    <a href="<?= base_url('dashboard') ?>"
+                       class="menu-link <?= service('uri')->getPath() == 'dashboard' ? 'active' : '' ?>">
                         <!--begin::Icon-->
                         <span class="menu-icon">
                             <i class="ki-solid ki-home-2 fas-1"></i>
