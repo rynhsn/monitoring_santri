@@ -34,8 +34,9 @@ class Hafalan extends BaseController
         ];
         if(in_groups('Wali')){
             $wali  = $this->waliModel->where('user_id',  user_id())->first();
+            $data['hafalan'] = $this->hafalanModel->getHafalan(['wali_nik' => $wali['nik_wali']]);
             $data['santri'] = $this->santriModel->where('wali_nik',  $wali['nik_wali'])->findAll();
-//            dd($data['santri']);
+//            dd($data['hafalan']);
         }
 
         return view('hafalan/index', $data);

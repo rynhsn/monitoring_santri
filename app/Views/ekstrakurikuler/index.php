@@ -270,14 +270,26 @@
                                            data-bs-target="#kt_modal_update_user_<?= $item['id_ekskul_santri'] ?>">Update</a>
                                     </div>
                                     <!--end::Menu item-->
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3 <?= $ekskul['id_ekskul'] != $item['ekskul_id'] ? 'd-none' : '' ?>">
+                                        <a href="<?= base_url('ekstrakurikuler/delete/' . $item['id_ekskul_santri']) ?>"
+                                           class="menu-link px-3"
+                                           onclick="return confirm('Data akan dihapus, yakin?')">Delete</a>
+                                    </div>
+                                    <!--end::Menu item-->
                                 <?php endif; ?>
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3 <?= $ekskul['id_ekskul'] != $item['ekskul_id'] ? 'd-none' : '' ?>">
-                                    <a href="<?= base_url('ekstrakurikuler/delete/' . $item['id_ekskul_santri']) ?>"
-                                       class="menu-link px-3"
-                                       onclick="return confirm('Data akan dihapus, yakin?')">Delete</a>
-                                </div>
-                                <!--end::Menu item-->
+                                <?php if (in_groups('Admin')) : ?>
+
+                                    <!--begin::Menu item-->
+                                    <div class="menu-item px-3">
+                                        <a href="<?= base_url('ekstrakurikuler/delete/' . $item['id_ekskul_santri']) ?>"
+                                           class="menu-link px-3"
+                                           onclick="return confirm('Data akan dihapus, yakin?')">Delete</a>
+                                    </div>
+                                    <!--end::Menu item-->
+                                <?php endif; ?>
+
+
                             </div>
                             <!--end::Menu-->
                             <?php endif; ?>
