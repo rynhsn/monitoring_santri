@@ -46,7 +46,7 @@ class Ekstrakurikuler extends BaseController
             $wali = $this->waliModel->where('user_id', user_id())->first();
             $data['santri'] = $this->santriModel->where('wali_nik', $wali['nik_wali'])->findAll();
 //            $data['ekskulSantri'] = $this->ekskulSantriModel->getEkskulByNis($data['santri']);
-            $data['ekskulSantri'] = $this->ekskulSantriModel->getEkskulByCond($wali['nik_wali']);
+            $data['ekskulSantri'] = $this->ekskulSantriModel->getEkskulByCond(['wali_nik'=>$wali['nik_wali']]);
         }
 
 //        dd($data);
