@@ -194,6 +194,30 @@
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="fw-semibold fs-6 mb-2 required">Link Kegiatan</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="link_kegiatan" id="link_kegiatan"
+                                                       placeholder="Masukkan link dokumentasi kegiatan"
+                                                       class="form-control form-control-solid mb-3 mb-lg-0"/>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
+                                            <!--begin::Input group-->
+                                            <div class="fv-row mb-7">
+                                                <!--begin::Label-->
+                                                <label class="fw-semibold fs-6 mb-2 required">Keterangan</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="keterangan" id="keterangan"
+                                                       placeholder="Masukkan keterangan"
+                                                       class="form-control form-control-solid mb-3 mb-lg-0"/>
+                                                <!--end::Input-->
+                                            </div>
+                                            <!--end::Input group-->
                                         </div>
                                         <!--end::Scroll-->
                                         <!--begin::Actions-->
@@ -235,6 +259,7 @@
                     <th class="min-w-75px">Kelas</th>
                     <th class="min-w-100px">Ekskul</th>
                     <th class="min-w-100px">Tanggal Latihan</th>
+                    <th class="min-w-100px">Kegiatan</th>
                     <?php if (hasActionAccess('write', user_id())): ?>
                         <th class="text-end min-w-100px">Actions</th>
                     <?php endif; ?>
@@ -254,6 +279,12 @@
                         </td>
                         <td><?= $item['ekskul'] ?></td>
                         <td><?= date('d M Y', strtotime($item['tanggal_latihan'])) ?></td>
+                        <td>
+                            <div class="d-flex flex-column">
+                                <a href="<?= $item['link_kegiatan'] ?>" class="text-success" target="_blank"><?= $item['link_kegiatan'] ?></a>
+                                <span><?= $item['keterangan'] ?></span>
+                            </div>
+                        </td>
 
                         <?php if (hasActionAccess('write', user_id())): ?>
                         <td class="text-end">
@@ -317,7 +348,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_update_user_<?= $item['id_ekskul_santri']?>_header">
                         <!--begin::Modal title-->
-                        <h2 class="fw-bold">Tambah Kehadiran</h2>
+                        <h2 class="fw-bold">Ubah Kehadiran</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-icon btn-sm btn-active-icon-success"
@@ -375,6 +406,30 @@
                                     <input type="date" name="tanggal_latihan" id="tanggal_latihan"
                                            value="<?= $item['tanggal_latihan'] ?>"
                                            class="form-control form-control-solid mb-3 mb-lg-0" required/>
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="fw-semibold fs-6 mb-2 required">Link Kegiatan</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="text" name="link_kegiatan" id="link_kegiatan"
+                                           placeholder="Masukkan link dokumentasi kegiatan" value="<?= $item['link_kegiatan'] ?>"
+                                           class="form-control form-control-solid mb-3 mb-lg-0"/>
+                                    <!--end::Input-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="fw-semibold fs-6 mb-2 required">Keterangan</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input type="text" name="keterangan" id="keterangan"
+                                           placeholder="Masukkan keterangan" value="<?= $item['keterangan'] ?>"
+                                           class="form-control form-control-solid mb-3 mb-lg-0"/>
                                     <!--end::Input-->
                                 </div>
                                 <!--end::Input group-->

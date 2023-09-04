@@ -43,7 +43,7 @@
                         <input type="number" name="nip_koordinator"
                                class="form-control form-control-lg form-control-solid <?= validation_show_error('nip_koordinator') ? 'is-invalid' : ''; ?>"
                                placeholder="Masukkan NIP Koordinator"
-                               value="<?= old('nip_koordinator') ?>" required/>
+                               value="<?= old('nip_koordinator') ?>" required minlength="9" maxlength="9"/>
                         <div class="invalid-feedback">
                             <?= validation_show_error('nip_koordinator'); ?>
                         </div>
@@ -118,10 +118,21 @@
                     <!--end::Label-->
                     <!--begin::Col-->
                     <div class="col-lg-5 fv-row">
-                        <input type="text" name="jabatan"
-                               class="form-control form-control-lg form-control-solid <?= validation_show_error('jabatan') ? 'is-invalid' : ''; ?>"
-                               placeholder="Jabatan"
-                               value="<?= old('jabatan') ?>" required/>
+<!--                        <input type="text" name="jabatan"-->
+<!--                               class="form-control form-control-lg form-control-solid --><?php //= validation_show_error('jabatan') ? 'is-invalid' : ''; ?><!--"-->
+<!--                               placeholder="Jabatan"-->
+<!--                               value="--><?php //= old('jabatan') ?><!--" required/>-->
+<!--                        <div class="invalid-feedback">-->
+<!--                            --><?php //= validation_show_error('jabatan'); ?>
+<!--                        </div>-->
+                        <select class="form-select form-select-solid <?= validation_show_error('jabatan') ? 'is-invalid' : ''; ?>" data-control="select2"
+                                data-placeholder="Pilih Jabatan"
+                                name="jabatan" id="jabatan"
+                                data-allow-clear="true" required>
+                            <option></option>
+                            <option value="Pengajar" <?= old('jabatan') == 'Pengajar' ? 'selected' : '' ?>>Pengajar</option>
+                            <option value="Koordinator" <?= old('jabatan') == 'Koordinator' ? 'selected' : '' ?>>Koordinator</option>
+                        </select>
                         <div class="invalid-feedback">
                             <?= validation_show_error('jabatan'); ?>
                         </div>

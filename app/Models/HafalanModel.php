@@ -13,7 +13,7 @@ class HafalanModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['santri_nis', 'pengajar_nip', 'surah', 'ayat_awal', 'ayat_akhir', 'tanggal'];
+    protected $allowedFields    = ['santri_nis', 'pengajar_nip', 'surah', 'ayat_awal', 'ayat_akhir', 'tanggal', 'link_kegiatan', 'keterangan'];
 
     // Dates
     protected $useTimestamps = false;

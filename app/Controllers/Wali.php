@@ -69,7 +69,7 @@ class Wali extends BaseController
     public function store()
     {
         $rules = [
-            'nik_wali' => 'required|is_unique[wali.nik_wali]',
+            'nik_wali' => 'required|numeric|min_length[16]|max_length[16]|is_unique[wali.nik_wali]',
             'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required',

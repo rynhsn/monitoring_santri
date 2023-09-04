@@ -69,7 +69,7 @@ class Pengajar extends BaseController
     public function store()
     {
         $rules = [
-            'nip_pengajar' => 'required|is_unique[pengajar.nip_pengajar]',
+            'nip_pengajar' => 'required|numeric|min_length[10]|max_length[10]|is_unique[pengajar.nip_pengajar]',
             'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
             'email' => 'required|valid_email|is_unique[users.email]',
             'password' => 'required',

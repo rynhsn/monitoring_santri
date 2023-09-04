@@ -12,7 +12,7 @@ class EkstrakurikulerSantriModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $protectFields = true;
-    protected $allowedFields = ['tanggal_latihan', 'ekskul_id', 'santri_nis', 'created_by', 'created_at', 'updated_at'];
+    protected $allowedFields = ['tanggal_latihan', 'ekskul_id', 'santri_nis', 'created_by', 'link_kegiatan', 'keterangan', 'created_at', 'updated_at'];
 
     // Dates
     protected $useTimestamps = true;

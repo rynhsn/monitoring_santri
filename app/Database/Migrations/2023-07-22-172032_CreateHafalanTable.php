@@ -36,6 +36,13 @@ class CreateHafalanTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 10,
             ],
+            'link_kegiatan' => [
+                'type' => 'text',
+            ],
+            'keterangan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
         ]);
 
         $this->forge->addPrimaryKey('id_hafalan');

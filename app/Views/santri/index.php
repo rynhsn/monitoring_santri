@@ -85,9 +85,10 @@
                                             <label class="required fw-semibold fs-6 mb-2">NIS</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input type="number" name="nis_santri" id="nis_santri"
+                                            <input type="text" name="nis_santri" id="nis_santri"
+                                                   pattern="[0-9]{9}"
                                                    class="form-control form-control-solid mb-3 mb-lg-0"
-                                                   placeholder="Masukkan NIS Santri" required/>
+                                                   placeholder="Masukkan NIS Santri" required minlength="9" maxlength="9"/>
                                             <!--end::Input-->
                                         </div>
                                         <!--end::Input group-->

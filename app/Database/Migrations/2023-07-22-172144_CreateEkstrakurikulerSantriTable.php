@@ -33,6 +33,13 @@ class CreateEkstrakurikulerSantriTable extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
+            'link_kegiatan' => [
+                'type' => 'text',
+            ],
+            'keterangan' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

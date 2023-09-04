@@ -40,10 +40,10 @@
                     <!--end::Label-->
                     <!--begin::Col-->
                     <div class="col-lg-10 fv-row">
-                        <input type="number" name="nik_wali"
+                        <input type="text" name="nik_wali"
                                class="form-control form-control-lg form-control-solid <?= validation_show_error('nik_wali') ? 'is-invalid' : ''; ?>"
                                placeholder="Masukkan NIK Wali"
-                               value="<?= old('nik_wali') ?>" required/>
+                               value="<?= old('nik_wali') ?>" pattern="[0-9]{16}" required/>
                         <div class="invalid-feedback">
                             <?= validation_show_error('nik_wali'); ?>
                         </div>
